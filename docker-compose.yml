@@ -1,0 +1,30 @@
+version: '2'
+services:
+    web:
+        build: 
+          context: .
+          dockerfile: ./Dockerfile
+        image: customer_api
+        command: gunicorn app:app --bind 0.0.0.0:5002
+        expose: 
+          - 5002
+    nginx:
+      build: ./nginx
+      image: customer_api_nginx
+      ports:
+        - 5002:80
+      depends_on:
+        - web
+
+
+
+# version: '3.4'
+
+# services:
+#   fastproj:
+#     image: fastproj
+#     build:
+#       context: .
+#       dockerfile: ./Dockerfile
+#     ports:
+#       - 5002:5002
