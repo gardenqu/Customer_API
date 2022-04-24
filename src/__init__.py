@@ -37,7 +37,7 @@ def create_app(test_config=None):
 
     @app.route('/')
     def hello():
-       return "This is my API   Go to link /customers  and /customer/<id>   to see more"
+       return "This is my API   Go to link /customers  and /customers/id   to see more"
 
     return app
 
