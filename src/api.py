@@ -4,6 +4,7 @@ from .models import Customer,db
 
 bp=Blueprint('customers',__name__,url_prefix='/customers')
 
+
 @bp.route('', methods=['GET']) # decorator takes path and list of HTTP verbs
 def index():
     customers = Customer.query.all() # ORM performs SELECT query

@@ -1,4 +1,4 @@
-from flask import Flask
+
 
 import os
 from flask import Flask
@@ -32,9 +32,12 @@ def create_app(test_config=None):
     db.init_app(app)
     migrate = Migrate(app, db)
 
-    # from .api import users, tweets
-    # app.register_blueprint(users.bp)
+    from . import api
+    app.register_blueprint(api.bp)
 
+    @app.route('/')
+    def hello():
+       return "This is my API   Go to link /customers  and /customer/<id>   to see more"
 
     return app
 

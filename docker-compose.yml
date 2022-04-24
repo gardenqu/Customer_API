@@ -5,7 +5,7 @@ services:
           context: .
           dockerfile: ./Dockerfile
         image: customer_api
-        command: gunicorn app:app --bind 0.0.0.0:5002
+        command: gunicorn wsgi:app --bind 0.0.0.0:5002
         expose: 
           - 5002
     nginx:
@@ -15,6 +15,7 @@ services:
         - 5002:80
       depends_on:
         - web
+
 
 
 
